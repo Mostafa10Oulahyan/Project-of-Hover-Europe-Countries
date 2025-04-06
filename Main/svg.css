@@ -1,0 +1,55 @@
+body{
+    background-color: #0cbeff;
+    font-family: Pacifico;
+    font-weight: 500;
+  }
+  h1{
+    background-clip: text ;
+    color: transparent;
+    background: linear-gradient(45deg, red, blue ,yellow,rgb(5, 255, 5));
+    -webkit-background-clip: text;
+    animation: me 3s linear infinite;
+    background-size: 300% 100%;
+}
+
+    .container {
+        width: 80%;
+        margin: 20px auto;
+        text-align: center;
+     
+    }
+    .pays {
+        fill: #88adef;
+        stroke: #333;
+        stroke-width: 0.5;
+        transition: all 0.3s;
+        cursor: pointer;
+    }
+    .pays:hover {
+        fill: #ffd966;
+        stroke-width: 1;
+    }
+
+    #info-box {
+        position: fixed;
+        border-radius: 10px;
+        top: 20px;
+        color: aliceblue;
+        right: 20px;
+        background: rgba(0, 255, 76, 0.454);
+        padding: 15px;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.113);
+        transition: all 0.2s ease-out ;
+        min-width: 200px;
+    }
+    #info-box:hover{
+        transform: scale(1.02);
+        letter-spacing: 1.4px;
+        background: transparent;
+    }
+    @keyframes me{
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
