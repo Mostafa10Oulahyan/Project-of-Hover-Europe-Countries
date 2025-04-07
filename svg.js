@@ -360,6 +360,22 @@ const paysData = {
         capitale: "Kyiv",
         monnaie: "Hryvnia"
     },
+    "GE": {
+    nom: "Géorgie",
+    population: "3 700 000",
+    superficie: "69 700",
+    gouvernement: "République parlementaire",
+    capitale: "Tbilissi",
+    monnaie: "Lari géorgien"
+},
+"AM": {
+    nom: "Arménie",
+    population: "2 900 000",
+    superficie: "29 743",
+    gouvernement: "République parlementaire",
+    capitale: "Erevan",
+    monnaie: "Dram arménien"
+},
     "VA": {
         nom: "Vatican",
         population: "800",
@@ -369,31 +385,75 @@ const paysData = {
         monnaie: "Euro"
     }
 };
-document.getElementById('carte-europe').addEventListener('load', function() {
-    const svgDoc = this.getSVGDocument();
-    const paths = svgDoc.querySelectorAll('path, polygon');
+ document.getElementById('carte-europe').addEventListener('load', function() {
+     const svgDoc = this.getSVGDocument();
+     const paths = svgDoc.querySelectorAll('path, polygon');
 
-    paths.forEach(pays => {
-        pays.classList.add('pays');
+     paths.forEach(pays => {
+         pays.classList.add('pays');
+            pays.style.fill = '#ffffff';
+            pays.style.stroke = '#ecf0f1';
+            pays.style.transition = 'all 0.3s ease';
         
-        pays.addEventListener('mouseover', function() {
-            const idPays = this.id;
-            const data = paysData[idPays] || {};       
-            document.getElementById('pays-nom').textContent = data.nom || 'Inconnu';
-            document.getElementById('population').textContent = data.population || '-';
-            document.getElementById('superficie').textContent = data.superficie || '-';
-            document.getElementById('gouvernement').textContent = data.gouvernement || '-';
-            document.getElementById('capitale').textContent = data.capitale || '-';
-            document.getElementById('monnaie').textContent = data.monnaie || '-';
-        });
+         pays.addEventListener('mouseover', function() {
+             const idPays = this.id;
+             const data = paysData[idPays] || {};       
+             document.getElementById('pays-nom').textContent = data.nom || 'Inconnu';
+             document.getElementById('population').textContent = data.population || '-';
+             document.getElementById('superficie').textContent = data.superficie || '-';
+             document.getElementById('gouvernement').textContent = data.gouvernement || '-';
+             document.getElementById('capitale').textContent = data.capitale || '-';
+             document.getElementById('monnaie').textContent = data.monnaie || '-';
+            this.style.fill = '#ffbb00';
+            this.style.strokeWidth = '1.5px';   
+          });
 
-        pays.addEventListener('mouseout', function() {
-            document.getElementById('pays-nom').textContent = "Sélectionnez un pays";
-            document.getElementById('population').textContent = '-';
-            document.getElementById('superficie').textContent = '-';
-            document.getElementById('gouvernement').textContent = '-';
-            document.getElementById('capitale').textContent = '-';
-            document.getElementById('monnaie').textContent = '-';
-        });
-    });
-});
+         pays.addEventListener('mouseout', function() {
+             document.getElementById('pays-nom').textContent = "Sélectionnez un pays";
+             document.getElementById('population').textContent = '-';
+             document.getElementById('superficie').textContent = '-';
+             document.getElementById('gouvernement').textContent = '-';
+             document.getElementById('capitale').textContent = '-';
+             document.getElementById('monnaie').textContent = '-';
+                this.style.fill = '#cddedf';
+                this.style.strokeWidth = '0.5px';
+          });
+     });
+ });
+
+
+// document.getElementById('carte-europe').addEventListener('load', function() {
+//     const svgDoc = this.getSVGDocument();
+//     const paths = svgDoc.querySelectorAll('path, polygon');
+
+//     paths.forEach(pays => {
+//         pays.style.fill = '#7f8c8d';
+//         pays.style.stroke = '#ecf0f1';
+//         pays.style.transition = 'all 0.3s ease';
+        
+//         pays.addEventListener('mouseover', function() {
+//             const idPays = this.id;
+//             const data = paysData[idPays] || {};
+            
+//             document.getElementById('pays-nom').textContent = data.nom || 'Inconnu';
+//             document.getElementById('population').textContent = data.population || '-';
+//             document.getElementById('superficie').textContent = data.superficie || '-';
+//             document.getElementById('gouvernement').textContent = data.gouvernement || '-';
+//             document.getElementById('capitale').textContent = data.capitale || '-';
+//             document.getElementById('monnaie').textContent = data.monnaie || '-';
+
+//             this.style.fill = '#e67e22';
+//             this.style.strokeWidth = '1.5px';
+//         });
+
+//         pays.addEventListener('mouseout', function() {
+
+//             document.getElementById('pays-nom').textContent = "Sélectionnez un pays";
+//             document.querySelectorAll('#info-box span').forEach(span => span.textContent = '-');
+            
+
+//             this.style.fill = '#7f8c8d';
+//             this.style.strokeWidth = '0.5px';
+//         });
+//     });
+// });
